@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Obsidian Vault Librarian Skills</title>
+<style>
+:root { color-scheme: dark; }
+body { font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 24px; color: #e5e7eb; background: transparent; }
+h1 { font-size: 24px; margin: 0 0 12px; }
+h2 { font-size: 18px; margin: 20px 0 8px; }
+h3 { font-size: 16px; margin: 16px 0 6px; }
+a { color: #7dd3fc; text-decoration: none; }
+a:hover { text-decoration: underline; }
+.card { border: 1px solid var(--border, #334155); border-radius: 12px; padding: 14px 16px; margin: 10px 0; background: var(--card, rgba(15,23,42,0.6)); }
+.meta { font-size: 12px; color: #94a3b8; margin-bottom: 6px; }
+.badge { display:inline-block; padding:2px 8px; border-radius:6px; background:#1e293b; color:#cbd5e1; font-size:11px; margin-right:6px; }
+</style>
+</head>
+<body>
+<h1>Obsidian Vault Librarian Skills & Tools — Ranked Findings</h1>
+<p>Compiled for Moto Gringo Productions / personal vault style. Focus: agentic librarian / vault management, local-first, skills-based, and automation-friendly.</p>
+
+<h2>Ranking Criteria</h2>
+<ul>
+<li><b>Local-first / self-hosted fit</b> — works with Netbird-only, no cloud lock-in</li>
+<li><b>Agent/Skills model</b> — uses <code>.agents/skills/&lt;name&gt;/SKILL.md</code> or equivalent</li>
+<li><b>Vault operations</b> — read/search/write with approval, link hygiene, MOC building</li>
+<li><b>Mobile parity</b> — works on phone too</li>
+<li><b>Integration</b> — MCP, OpenAI-compatible API, Ollama/LM Studio support</li>
+</ul>
+
+<div id="list"></div>
+
+<script>
+const items = [
+{rank:1,title:"Vault Librarian — Obsidian Plugin",url:"https://community.obsidian.md/plugins/vault-librarian",note:"Built-in agent living in Obsidian. Plain-language search with find/grep/read, answers with source lines, changes only after approval. Skills via .agents/skills/*.SKILL.md. Desktop + mobile, any OpenAI-compatible endpoint.",badges:["Local-first","Skills","Mobile"]},
+{rank:2,title:"Vault Operator — Obsidian Plugin",url:"https://community.obsidian.md/plugins/vault-operator",note:"Agentic AI operating layer. Plans, searches, reads, writes, reports back. Every action visible, writes need approval, one-click undo. BYOK + MCP. Works cloud or offline with Ollama/LM Studio.",badges:["Approval","MCP","Offline"]},
+{rank:3,title:"Claudesidian MCP — Claude Desktop Vault Control",url:"https://github.com/ProfSynapse/claudesidian-mcp",note:"Gives Claude agentic access via MCP. Team of AI assistants managing notes, projects, automation via natural language. Full vault access, note editor/reader/manager, command palette.",badges:["YouTube","MCP","Claude"]},
+{rank:4,title:"VaultForge — Obsidian Plugin",url:"https://community.obsidian.md/plugins/vaultforge",note:"Brings Claude into vault via local MCP + in-app chat. Vault folder as Claude Skills directory with SKILL.md per skill. Auth via Claude Code login.",badges:["Claude Skills","MCP"]},
+{rank:5,title:"Smart Composer + Ollama Local AI",url:"https://www.youtube.com/watch?v=2paigpNDNz0",note:"Ultimate local AI guide. Docker + Ollama with Qwen + Smart Composer for context-aware writing and vault search. Embedding model = librarian.",badges:["YouTube","Local","Privacy"]},
+{rank:6,title:"AI Vault Assistant — Obsidian Plugin",url:"https://community.obsidian.md/plugins/ai-vault-assistant",note:"Connects cc-switch local proxy, vault, community plugins, external agents like Codex. Built-in Skills scan + MCP on 127.0.0.1:33157/mcp.",badges:["MCP","Skills"]},
+{rank:7,title:"claude-obsidian / Claude Code + Obsidian",url:"https://github.com/AgriciDaniel/claude-obsidian",note:"Local-first knowledge system for Claude Code and Agent Skills hosts. Turns sources into linked, source-cited pages; answers from vault evidence.",badges:["Local-first","Agent Skills"]},
+{rank:8,title:"kepano obsidian-skills + Obsidian CLI",url:"https://github.com/kepano/obsidian-skills",note:"Official Obsidian CLI skills. AI agent searches, reads, creates, organizes knowledge base from terminal. 70k cheaper than API calls.",badges:["YouTube","CLI","Official"]},
+{rank:9,title:"Vault Doctor Agent Skill",url:"https://www.youtube.com/watch?v=We9l8WpViqc",note:"AI skill that audits 10k-note vault — fixes broken links, inconsistent properties, outdated note types. Karpathy KB workflow inspired.",badges:["YouTube","Maintenance"]},
+{rank:10,title:"Vault LLM Assistant — Obsidian Plugin",url:"https://community.obsidian.md/plugins/vault-llm-assistant",note:"Query vault with AI, get contextual answers with citations, create notes. Supports OpenAI, Gemini, Claude, local LLMs LM Studio/Ollama.",badges:["Citations"]},
+{rank:11,title:"LLM Hub — Obsidian Plugin",url:"https://www.obsidianstats.com/tags/ai-assistant",note:"Multiple AI workflows. Chat with different providers, switch API/local/CLI, vault-aware tools, prompt slash commands, reusable agent skills, RAG search, MCP.",badges:["Multi-provider"]},
+{rank:12,title:"Obsidian-SKILLS / Agent Skills Library",url:"https://github.com/adriangrantdotorg/Obsidian-SKILLS",note:"Collection of Agent Skills. Vault Operations via CLI: read, create, append, search. Task & Property Management, Daily Notes.",badges:["CLI","Skills"]},
+{rank:13,title:"Hermes Agentic Librarian Workflow",url:"https://www.youtube.com/watch?v=_bieksxg6oY",note:"Hermes built-in LLM Wiki skill with human-in-the-loop trust layer. Bronze → Silver → Gold workflow with review inbox. Works with any agentic AI.",badges:["YouTube","Hermes","HITL"]},
+{rank:14,title:"obsidian-automation / PARA automation scripts",url:"https://github.com/mickdarling/obsidian-automation",note:"QuickAdd scripts for PARA method. Atomization, AI-assisted categorization, automated file organization based on frontmatter.",badges:["Automation","PARA"]},
+{rank:15,title:"Oz Orchestration Platform",url:"https://www.youtube.com/watch?v=qB_uKIB-SqQ",note:"Cloud agents research Obsidian vault automatically, summarize articles, create notes. Built by Warp.",badges:["YouTube","Cloud"]},
+{rank:16,title:"Skill and Harness Manager — Obsidian Plugin",url:"https://community.obsidian.md/plugins/skill-harness-manager",note:"Consolidates AI skills, commands, agents into Obsidian ribbon/right-click. MacOS only.",badges:["MacOS"]},
+{rank:17,title:"Librarian — Book tracking plugin",url:"https://www.obsidianstats.com/plugins/librarian",note:"Comprehensive book-tracking/library management. Open Library integration, reading stats.",badges:["Books"]}
+];
+const list = document.getElementById('list');
+items.forEach(it=>{
+ const card = document.createElement('div');
+ card.className='card';
+ card.innerHTML = `<div class="meta">#${it.rank} • <a href="${it.url}" target="_blank">${it.title}</a></div>
+ <div>${it.note}</div>
+ <div style="margin-top:6px">${it.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div>`;
+ list.appendChild(card);
+});
+</script>
+</body>
+</html>
