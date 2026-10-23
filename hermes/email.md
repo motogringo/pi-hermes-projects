@@ -1,6 +1,6 @@
 # Hermes email (Fastmail mailbox)
 
-Status: planned, not built. Dedicated Fastmail address exists. Himalaya is not installed. Only profile on pi-hermes is `default`. No app passwords or mailbox credentials belong in this file.
+Status: working. Himalaya v2.2.1 IMAP+SMTP OK against `hermes@motogringo.productions`. App password from `op://ai-hermes/hermes-fastmail/app password`. No secrets belong in this file.
 
 Host: Raspberry Pi 5 (`pi-hermes`). Agent stays on the Pi. Windows desktops are GUIs against that backend.
 
@@ -119,10 +119,12 @@ The mail bot does IMAP/SMTP and replies with what it sent or found. Your text is
 
 ## Not done yet
 
-- [ ] Create `mail` profile (`--no-skills`)
-- [ ] Wire model/provider; seed himalaya only
-- [ ] Install himalaya CLI
-- [ ] Profile-local Himalaya config + 600 password file
-- [ ] Mail SOUL; strip himalaya from `default`
-- [ ] Bot Chat sessions + `ui_meta` (Desktop New Agent, or headless stamp)
+- [x] Create `mail` profile (`--no-skills`)
+- [x] Wire model/provider; seed himalaya only (himalaya stays disabled on `default`)
+- [x] Install himalaya CLI (v2.2.1 aarch64)
+- [x] Profile-local Himalaya config; app password via `op://ai-hermes/hermes-fastmail/app password`
+- [x] Mail SOUL; himalaya disabled on `default`; default SOUL hands off
+- [x] `ui_meta.hermes-bots` stamped on `mail` (Bot Chat sessions still optional)
+- [x] Username spelling in Himalaya config (`hermes@motogringo.productions`)
+- [x] Fastmail IMAP/SMTP auth (`himalaya-mail account check` imap OK, smtp OK)
 - [ ] Optional: list-only inbox routine on the mail profile
